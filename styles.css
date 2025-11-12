@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+}
+
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 2rem auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.canvas-container {
+    background: #000;
+    border: 1px solid #333;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+#neuralNetwork {
+    display: block;
+    width: 100%;
+    height: 700px;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: fixed;
+    background: #000;
+    color: #e0e0e0;
+    padding: 10px 14px;
+    border: 1px solid #555;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1000;
+    max-width: 250px;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+.tooltip strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    color: #fff;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    #neuralNetwork {
+        height: 400px;
+    }
+
+    .canvas-container {
+        padding: 1rem;
+    }
+}
