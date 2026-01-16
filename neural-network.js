@@ -33,10 +33,10 @@ class NeuralNetworkViz {
         this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
         this.canvas.addEventListener('click', (e) => this.handleClick(e));
 
-        // Touch events for mobile
-        this.canvas.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: false });
-        this.canvas.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
-        this.canvas.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+        // Touch events for mobile - allow scrolling, only prevent default on actual taps
+        this.canvas.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+        this.canvas.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+        this.canvas.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: false });
 
         this.setupModal();
         this.calculateNodePositions();
@@ -207,10 +207,12 @@ class NeuralNetworkViz {
     }
 
     handleTouchStart(e) {
-        e.preventDefault();
         const touch = e.touches[0];
-        const node = this.getNodeAtPosition(touch.clientX, touch.clientY);
+        this.touchStartX = touch.clientX;
+        this.touchStartY = touch.clientY;
+        this.touchMoved = false;
 
+        const node = this.getNodeAtPosition(touch.clientX, touch.clientY);
         if (node) {
             this.hoveredNode = node;
             this.touchStartNode = node;
@@ -221,28 +223,27 @@ class NeuralNetworkViz {
     }
 
     handleTouchMove(e) {
-        e.preventDefault();
         const touch = e.touches[0];
-        const node = this.getNodeAtPosition(touch.clientX, touch.clientY);
+        const deltaX = Math.abs(touch.clientX - this.touchStartX);
+        const deltaY = Math.abs(touch.clientY - this.touchStartY);
 
-        if (node) {
-            this.hoveredNode = node;
-        } else {
-            this.hoveredNode = null;
-        }
-        // Clear touchStartNode if user drags away
-        if (node !== this.touchStartNode) {
+        // If moved more than 10px, consider it a scroll
+        if (deltaX > 10 || deltaY > 10) {
+            this.touchMoved = true;
             this.touchStartNode = null;
+            this.hoveredNode = null;
         }
     }
 
     handleTouchEnd(e) {
-        // If we started and ended on the same node, open modal
-        if (this.touchStartNode && this.hoveredNode === this.touchStartNode) {
+        // Only open modal if we didn't scroll and started on a node
+        if (!this.touchMoved && this.touchStartNode) {
+            e.preventDefault();
             this.showModal(this.touchStartNode);
         }
         this.hoveredNode = null;
         this.touchStartNode = null;
+        this.touchMoved = false;
     }
 
     getNodeAtPosition(clientX, clientY) {
