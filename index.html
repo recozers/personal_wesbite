@@ -24,6 +24,32 @@
 
         <div id="tooltip" class="tooltip"></div>
 
+        <!-- Modal for detailed node view -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-header">
+                    <span class="modal-category" id="modalCategory"></span>
+                    <h2 id="modalTitle"></h2>
+                    <span class="modal-year" id="modalYear"></span>
+                </div>
+                <div class="modal-body">
+                    <p id="modalDetails"></p>
+                    <div class="modal-links" id="modalLinks"></div>
+                </div>
+                <div class="modal-connections">
+                    <div class="connection-group" id="connectionFrom">
+                        <span class="connection-label">Built from:</span>
+                        <div class="connection-nodes" id="fromNodes"></div>
+                    </div>
+                    <div class="connection-group" id="connectionTo">
+                        <span class="connection-label">Led to:</span>
+                        <div class="connection-nodes" id="toNodes"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>Hover over nodes to explore • Click for details</p>
         </footer>

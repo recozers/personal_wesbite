@@ -9,6 +9,19 @@ class NeuralNetworkViz {
         this.hoveredNode = null;
         this.animationProgress = 0;
 
+        // Modal elements
+        this.modal = document.getElementById('modal');
+        this.modalClose = document.getElementById('modalClose');
+        this.modalTitle = document.getElementById('modalTitle');
+        this.modalCategory = document.getElementById('modalCategory');
+        this.modalYear = document.getElementById('modalYear');
+        this.modalDetails = document.getElementById('modalDetails');
+        this.modalLinks = document.getElementById('modalLinks');
+        this.connectionFrom = document.getElementById('connectionFrom');
+        this.connectionTo = document.getElementById('connectionTo');
+        this.fromNodes = document.getElementById('fromNodes');
+        this.toNodes = document.getElementById('toNodes');
+
         this.init();
     }
 
@@ -17,8 +30,28 @@ class NeuralNetworkViz {
         window.addEventListener('resize', () => this.resizeCanvas());
         this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
         this.canvas.addEventListener('click', (e) => this.handleClick(e));
+        this.setupModal();
         this.calculateNodePositions();
         this.animate();
+    }
+
+    setupModal() {
+        // Close modal on X button click
+        this.modalClose.addEventListener('click', () => this.closeModal());
+
+        // Close modal on backdrop click
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal.classList.contains('show')) {
+                this.closeModal();
+            }
+        });
     }
 
     resizeCanvas() {
@@ -161,8 +194,84 @@ class NeuralNetworkViz {
 
     handleClick(e) {
         if (this.hoveredNode) {
-            alert(`${this.hoveredNode.title}\n\n${this.hoveredNode.description}\n\nYear: ${this.hoveredNode.year}`);
+            this.showModal(this.hoveredNode);
         }
+    }
+
+    showModal(node) {
+        // Hide tooltip when modal opens
+        this.hideTooltip();
+
+        // Set basic info
+        this.modalTitle.textContent = node.title;
+        this.modalYear.textContent = node.year;
+        this.modalDetails.textContent = node.details || node.description;
+
+        // Set category with styling
+        const category = node.category || 'personal';
+        this.modalCategory.textContent = category;
+        this.modalCategory.className = 'modal-category ' + category;
+
+        // Build links section
+        this.modalLinks.innerHTML = '';
+        if (node.links && node.links.length > 0) {
+            node.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = link.label;
+                this.modalLinks.appendChild(a);
+            });
+        }
+
+        // Find connected nodes
+        const fromConnections = this.data.connections
+            .filter(c => c.to === node.id)
+            .map(c => this.nodes.find(n => n.id === c.from))
+            .filter(n => n);
+
+        const toConnections = this.data.connections
+            .filter(c => c.from === node.id)
+            .map(c => this.nodes.find(n => n.id === c.to))
+            .filter(n => n);
+
+        // Build "from" connections
+        this.fromNodes.innerHTML = '';
+        if (fromConnections.length > 0) {
+            this.connectionFrom.classList.remove('hidden');
+            fromConnections.forEach(connNode => {
+                const btn = document.createElement('button');
+                btn.className = 'connection-node';
+                btn.textContent = connNode.title;
+                btn.addEventListener('click', () => this.showModal(connNode));
+                this.fromNodes.appendChild(btn);
+            });
+        } else {
+            this.connectionFrom.classList.add('hidden');
+        }
+
+        // Build "to" connections
+        this.toNodes.innerHTML = '';
+        if (toConnections.length > 0) {
+            this.connectionTo.classList.remove('hidden');
+            toConnections.forEach(connNode => {
+                const btn = document.createElement('button');
+                btn.className = 'connection-node';
+                btn.textContent = connNode.title;
+                btn.addEventListener('click', () => this.showModal(connNode));
+                this.toNodes.appendChild(btn);
+            });
+        } else {
+            this.connectionTo.classList.add('hidden');
+        }
+
+        // Show modal
+        this.modal.classList.add('show');
+    }
+
+    closeModal() {
+        this.modal.classList.remove('show');
     }
 
     showTooltip(node, x, y) {
