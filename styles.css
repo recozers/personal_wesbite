@@ -277,20 +277,193 @@ footer {
     border-color: #666;
 }
 
+/* Tablet and below */
 @media (max-width: 768px) {
+    .container {
+        margin: 1rem auto;
+    }
+
     h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        letter-spacing: 1px;
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .social-links {
+        gap: 1.25rem;
+    }
+
+    .social-links a {
+        font-size: 0.75rem;
+        padding: 8px 4px;
     }
 
     #neuralNetwork {
-        height: 400px;
+        height: 450px;
     }
 
     .canvas-container {
+        padding: 1rem;
+        border: none;
+    }
+
+    .tooltip {
+        display: none;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+        max-height: 85vh;
+    }
+
+    .modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .modal-body p {
+        font-size: 0.85rem;
+    }
+
+    footer {
+        font-size: 0.7rem;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 0.5rem auto;
+    }
+
+    header {
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        font-size: 0.7rem;
+    }
+
+    #neuralNetwork {
+        height: 380px;
+    }
+
+    .canvas-container {
+        padding: 0.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.25rem;
+        max-height: 90vh;
+    }
+
+    .modal-close {
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 1.75rem;
+        padding: 4px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.1rem;
+        padding-right: 1.5rem;
+    }
+
+    .modal-category {
+        font-size: 0.6rem;
+    }
+
+    .modal-body p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
+    .modal-links a {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+
+    .connection-node {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    footer p {
+        padding: 0 1rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    #neuralNetwork {
+        height: 320px;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        margin: 0.5rem auto;
+    }
+
+    header {
+        margin-bottom: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.75rem;
+    }
+
+    .social-links {
+        margin-top: 0.5rem;
+        gap: 1rem;
+    }
+
+    #neuralNetwork {
+        height: 250px;
+    }
+
+    .canvas-container {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .modal-content {
+        max-height: 95vh;
         padding: 1rem;
     }
 }

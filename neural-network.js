@@ -28,8 +28,16 @@ class NeuralNetworkViz {
     init() {
         this.resizeCanvas();
         window.addEventListener('resize', () => this.resizeCanvas());
+
+        // Mouse events for desktop
         this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
         this.canvas.addEventListener('click', (e) => this.handleClick(e));
+
+        // Touch events for mobile
+        this.canvas.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: false });
+        this.canvas.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
+        this.canvas.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+
         this.setupModal();
         this.calculateNodePositions();
         this.animate();
@@ -196,6 +204,62 @@ class NeuralNetworkViz {
         if (this.hoveredNode) {
             this.showModal(this.hoveredNode);
         }
+    }
+
+    handleTouchStart(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const node = this.getNodeAtPosition(touch.clientX, touch.clientY);
+
+        if (node) {
+            this.hoveredNode = node;
+            this.touchStartNode = node;
+        } else {
+            this.hoveredNode = null;
+            this.touchStartNode = null;
+        }
+    }
+
+    handleTouchMove(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const node = this.getNodeAtPosition(touch.clientX, touch.clientY);
+
+        if (node) {
+            this.hoveredNode = node;
+        } else {
+            this.hoveredNode = null;
+        }
+        // Clear touchStartNode if user drags away
+        if (node !== this.touchStartNode) {
+            this.touchStartNode = null;
+        }
+    }
+
+    handleTouchEnd(e) {
+        // If we started and ended on the same node, open modal
+        if (this.touchStartNode && this.hoveredNode === this.touchStartNode) {
+            this.showModal(this.touchStartNode);
+        }
+        this.hoveredNode = null;
+        this.touchStartNode = null;
+    }
+
+    getNodeAtPosition(clientX, clientY) {
+        const rect = this.canvas.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        // Use larger touch radius for mobile (easier to tap)
+        const touchRadius = window.innerWidth <= 768 ? 25 : 15;
+
+        for (let node of this.nodes) {
+            const distance = Math.sqrt((x - node.x) ** 2 + (y - node.y) ** 2);
+            if (distance < touchRadius) {
+                return node;
+            }
+        }
+        return null;
     }
 
     showModal(node) {
