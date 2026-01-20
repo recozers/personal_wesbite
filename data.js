@@ -284,6 +284,17 @@ const timelineData = {
                     details: "I underwent surgery on my left hip and hamstring - mirroring the right side surgery from 2021. Recovery and rehabilitation continue with the goal of returning to competition.",
                     year: "2025",
                     category: "athletics"
+                },
+                {
+                    id: "l9n5",
+                    title: "Mech Interp",
+                    description: "Mapping the internal geopolitics of LLMs",
+                    details: "I'm doing mechanistic interpretability research to understand how LLMs internally represent geopolitical concepts and biases. I built worldaccordingtoai.com to visualize these findings and am working on steering techniques for open source models to better understand and control model behavior.",
+                    year: "2025",
+                    category: "tech",
+                    links: [
+                        { label: "World According to AI", url: "https://worldaccordingtoai.com" }
+                    ]
                 }
             ]
         }
@@ -373,6 +384,11 @@ const timelineData = {
         { from: "l8n4", to: "l9n1" },
         { from: "l8n4", to: "l9n2" },
         { from: "l8n4", to: "l9n3" },
-        { from: "l8n4", to: "l9n4" }
+        { from: "l8n4", to: "l9n4" },
+        { from: "l8n0", to: "l9n5" },
+        { from: "l8n1", to: "l9n5" },
+        { from: "l8n2", to: "l9n5" },
+        { from: "l8n3", to: "l9n5" },
+        { from: "l8n4", to: "l9n5" }
     ]
 };
