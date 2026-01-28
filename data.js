@@ -295,6 +295,17 @@ const timelineData = {
                     links: [
                         { label: "World According to AI", url: "https://worldaccordingtoai.com" }
                     ]
+                },
+                {
+                    id: "l9n6",
+                    title: "Wearables of Loving Grace",
+                    description: "A call to action for wearable technologists",
+                    details: "My thoughts on the state of wearable tech in 2025, where the next 10 years take us, and why we need more ambition and scale in wearable health.",
+                    year: "2025",
+                    category: "writing",
+                    links: [
+                        { label: "Read the Article", url: "https://open.substack.com/pub/stuartbladon/p/wearables-of-loving-grace?r=2rvhu6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" }
+                    ]
                 }
             ]
         }
@@ -389,6 +400,11 @@ const timelineData = {
         { from: "l8n1", to: "l9n5" },
         { from: "l8n2", to: "l9n5" },
         { from: "l8n3", to: "l9n5" },
-        { from: "l8n4", to: "l9n5" }
+        { from: "l8n4", to: "l9n5" },
+        { from: "l8n0", to: "l9n6" },
+        { from: "l8n1", to: "l9n6" },
+        { from: "l8n2", to: "l9n6" },
+        { from: "l8n3", to: "l9n6" },
+        { from: "l8n4", to: "l9n6" }
     ]
 };
