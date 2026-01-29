@@ -244,7 +244,7 @@ const timelineData = {
                     title: "Graduating",
                     description: "Completing Masters in AI at Duke",
                     details: "I'm completing my Master's in AI at Duke University. I'm also doing some interpretability research on the internal preferences of models.",
-                    year: "2025",
+                    year: "2026",
                     category: "education"
                 },
                 {
