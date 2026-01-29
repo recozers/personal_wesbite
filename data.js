@@ -290,7 +290,7 @@ const timelineData = {
                     title: "Mech Interp",
                     description: "Mapping the internal geopolitics of LLMs",
                     details: "I'm doing mechanistic interpretability research to understand how LLMs internally represent geopolitical concepts and biases. I built worldaccordingtoai.com to visualize these findings and am working on steering techniques for open source models to better understand and control model behavior.",
-                    year: "2025",
+                    year: "2026",
                     category: "tech",
                     links: [
                         { label: "World According to AI", url: "https://worldaccordingtoai.com" }
@@ -301,7 +301,7 @@ const timelineData = {
                     title: "Wearables of Loving Grace",
                     description: "A call to action for wearable technologists",
                     details: "My thoughts on the state of wearable tech in 2025, where the next 10 years take us, and why we need more ambition and scale in wearable health.",
-                    year: "2025",
+                    year: "2026",
                     category: "writing",
                     links: [
                         { label: "Read the Article", url: "https://open.substack.com/pub/stuartbladon/p/wearables-of-loving-grace?r=2rvhu6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" }
