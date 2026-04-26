@@ -306,6 +306,24 @@ const timelineData = {
                     links: [
                         { label: "Read the Article", url: "https://open.substack.com/pub/stuartbladon/p/wearables-of-loving-grace?r=2rvhu6&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" }
                     ]
+                },
+                {
+                    id: "l9n7",
+                    title: "LLM Bias Paper",
+                    description: "Draft paper on geopolitical bias in LLMs",
+                    details: "An early draft of my paper on measuring and mapping geopolitical bias in large language models. Click to open the PDF.",
+                    year: "2026",
+                    category: "tech",
+                    pdf: "papers/llm-bias.pdf"
+                },
+                {
+                    id: "l9n8",
+                    title: "Tribe V2 Interp",
+                    description: "Draft paper on Tribe V2 interpretability",
+                    details: "Draft v1 of the Tribe V2 interpretability paper. Click to open the PDF.",
+                    year: "2026",
+                    category: "tech",
+                    pdf: "papers/tribe-interp.pdf"
                 }
             ]
         }
@@ -405,6 +423,16 @@ const timelineData = {
         { from: "l8n1", to: "l9n6" },
         { from: "l8n2", to: "l9n6" },
         { from: "l8n3", to: "l9n6" },
-        { from: "l8n4", to: "l9n6" }
+        { from: "l8n4", to: "l9n6" },
+        { from: "l8n0", to: "l9n7" },
+        { from: "l8n1", to: "l9n7" },
+        { from: "l8n2", to: "l9n7" },
+        { from: "l8n3", to: "l9n7" },
+        { from: "l8n4", to: "l9n7" },
+        { from: "l8n0", to: "l9n8" },
+        { from: "l8n1", to: "l9n8" },
+        { from: "l8n2", to: "l9n8" },
+        { from: "l8n3", to: "l9n8" },
+        { from: "l8n4", to: "l9n8" }
     ]
 };
