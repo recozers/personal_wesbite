@@ -202,8 +202,16 @@ class NeuralNetworkViz {
 
     handleClick(e) {
         if (this.hoveredNode) {
-            this.showModal(this.hoveredNode);
+            this.openNode(this.hoveredNode);
         }
+    }
+
+    openNode(node) {
+        if (node.pdf) {
+            window.open(node.pdf, '_blank', 'noopener,noreferrer');
+            return;
+        }
+        this.showModal(node);
     }
 
     handleTouchStart(e) {
@@ -236,10 +244,10 @@ class NeuralNetworkViz {
     }
 
     handleTouchEnd(e) {
-        // Only open modal if we didn't scroll and started on a node
+        // Only open if we didn't scroll and started on a node
         if (!this.touchMoved && this.touchStartNode) {
             e.preventDefault();
-            this.showModal(this.touchStartNode);
+            this.openNode(this.touchStartNode);
         }
         this.hoveredNode = null;
         this.touchStartNode = null;
@@ -309,7 +317,7 @@ class NeuralNetworkViz {
                 const btn = document.createElement('button');
                 btn.className = 'connection-node';
                 btn.textContent = connNode.title;
-                btn.addEventListener('click', () => this.showModal(connNode));
+                btn.addEventListener('click', () => this.openNode(connNode));
                 this.fromNodes.appendChild(btn);
             });
         } else {
@@ -324,7 +332,7 @@ class NeuralNetworkViz {
                 const btn = document.createElement('button');
                 btn.className = 'connection-node';
                 btn.textContent = connNode.title;
-                btn.addEventListener('click', () => this.showModal(connNode));
+                btn.addEventListener('click', () => this.openNode(connNode));
                 this.toNodes.appendChild(btn);
             });
         } else {
