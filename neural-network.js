@@ -207,8 +207,9 @@ class NeuralNetworkViz {
     }
 
     openNode(node) {
-        if (node.pdf) {
-            window.open(node.pdf, '_blank', 'noopener,noreferrer');
+        const target = node.url || node.pdf;
+        if (target) {
+            window.open(target, '_blank', 'noopener,noreferrer');
             return;
         }
         this.showModal(node);

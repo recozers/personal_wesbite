@@ -319,11 +319,11 @@ const timelineData = {
                 {
                     id: "l9n8",
                     title: "Tribe V2 Interp",
-                    description: "Draft paper on Tribe V2 interpretability",
-                    details: "Draft v1 of the Tribe V2 interpretability paper. Click to open the PDF.",
+                    description: "Pre-print on Tribe V2 interpretability",
+                    details: "Pre-print of my paper on neural and cortical selectivity in the brain in Tribe V2. Click to open on arXiv.",
                     year: "2026",
                     category: "tech",
-                    pdf: "papers/tribe-interp.pdf"
+                    url: "https://arxiv.org/abs/2605.13904"
                 }
             ]
         }
