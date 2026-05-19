@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/papers/tribe-interp.pdf",
+      "destination": "https://arxiv.org/abs/2605.13904",
+      "permanent": true
+    }
+  ]
+}
