@@ -309,12 +309,12 @@ const timelineData = {
                 },
                 {
                     id: "l9n7",
-                    title: "LLM Bias Paper",
-                    description: "Draft paper on geopolitical bias in LLMs",
-                    details: "An early draft of my paper on measuring and mapping geopolitical bias in large language models. Click to open the PDF.",
+                    title: "It's the Humans, Not the Data",
+                    description: "Pre-print on geopolitical bias in LLMs",
+                    details: "Pre-print of my paper on measuring and mapping geopolitical bias in large language models. Click to open on arXiv.",
                     year: "2026",
                     category: "tech",
-                    pdf: "papers/llm-bias.pdf"
+                    url: "https://arxiv.org/abs/2605.23825"
                 },
                 {
                     id: "l9n8",

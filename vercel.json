@@ -4,6 +4,11 @@
       "source": "/papers/tribe-interp.pdf",
       "destination": "https://arxiv.org/abs/2605.13904",
       "permanent": true
+    },
+    {
+      "source": "/papers/llm-bias.pdf",
+      "destination": "https://arxiv.org/abs/2605.23825",
+      "permanent": true
     }
   ]
 }
