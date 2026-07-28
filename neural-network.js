@@ -342,6 +342,7 @@ class NeuralNetworkViz {
             ctx.fillStyle = INK.layerLabel;
             ctx.font = '400 9px "IBM Plex Mono", ui-monospace, monospace';
             ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
             ctx.fillText(layer.name, x, 12);
             ctx.restore();
         });
