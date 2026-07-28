@@ -1,109 +1,160 @@
+:root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --ink: #141412;
+    --ink-soft: #55554f;
+    --ink-faint: #8a8a82;
+    --ink-ghost: #b3b3ab;
+    --line: #e6e6e0;
+    --line-strong: #d6d6cf;
+    --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    background: var(--bg);
+}
+
 body {
-    font-family: 'Courier New', monospace;
-    background: #0a0a0a;
+    font-family: var(--font-mono);
+    background: var(--bg);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #e0e0e0;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
     width: 95%;
     max-width: 1400px;
-    margin: 2rem auto;
+    margin: 3rem auto;
 }
 
 header {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #e0e0e0;
+    margin-bottom: 2.25rem;
 }
 
 h1 {
-    font-size: 2rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
 }
 
 .subtitle {
-    font-size: 0.9rem;
-    opacity: 0.6;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--ink-faint);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
 }
 
 .social-links {
-    margin-top: 1rem;
+    margin-top: 1.4rem;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.25rem;
 }
 
 .social-links a {
-    color: #888;
+    color: var(--ink-soft);
     text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .social-links a:hover {
-    color: #fff;
+    color: var(--ink);
+    border-bottom-color: var(--ink);
 }
 
 .canvas-container {
-    background: #000;
-    border: 1px solid #333;
+    background: var(--surface);
+    background-image: radial-gradient(circle, rgba(20, 20, 18, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow:
+        0 1px 2px rgba(20, 20, 18, 0.04),
+        0 12px 40px -18px rgba(20, 20, 18, 0.12);
     padding: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 #neuralNetwork {
     display: block;
     width: 100%;
     height: 700px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .tooltip {
     position: fixed;
-    background: #000;
-    color: #e0e0e0;
-    padding: 10px 14px;
-    border: 1px solid #555;
-    font-size: 12px;
-    font-family: 'Courier New', monospace;
+    background: var(--surface);
+    color: var(--ink-soft);
+    padding: 12px 15px;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px -8px rgba(20, 20, 18, 0.18);
+    font-size: 11.5px;
+    line-height: 1.55;
+    font-family: var(--font-mono);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.2s;
+    transform: translateY(3px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
     z-index: 1000;
-    max-width: 250px;
+    max-width: 260px;
 }
 
 .tooltip.show {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .tooltip strong {
     display: block;
-    margin-bottom: 4px;
-    font-size: 13px;
-    color: #fff;
+    margin-bottom: 3px;
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+}
+
+.tooltip .tooltip-year {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-ghost);
+    margin-bottom: 6px;
 }
 
 footer {
     text-align: center;
-    color: #666;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+    color: var(--ink-ghost);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hint-mobile {
+    display: none;
 }
 
 /* Modal styles */
@@ -114,12 +165,14 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(250, 250, 247, 0.72);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     z-index: 2000;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
 }
 
 .modal.show {
@@ -128,14 +181,18 @@ footer {
 }
 
 .modal-content {
-    background: #111;
-    border: 1px solid #333;
-    max-width: 500px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow:
+        0 4px 16px rgba(20, 20, 18, 0.06),
+        0 32px 80px -24px rgba(20, 20, 18, 0.28);
+    max-width: 520px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    padding: 2rem;
+    padding: 2.25rem;
 }
 
 .modal-close {
@@ -144,16 +201,16 @@ footer {
     right: 1rem;
     background: none;
     border: none;
-    color: #666;
+    color: var(--ink-ghost);
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0;
+    padding: 0.25rem;
     line-height: 1;
     transition: color 0.2s;
 }
 
 .modal-close:hover {
-    color: #fff;
+    color: var(--ink);
 }
 
 .modal-header {
@@ -162,33 +219,36 @@ footer {
 
 .modal-category {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 4px 8px;
-    border: 1px solid #444;
-    color: #888;
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.2em;
+    padding: 4px 11px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-faint);
+    margin-bottom: 0.85rem;
 }
 
-.modal-category.athletics { border-color: #4a9; color: #4a9; }
-.modal-category.education { border-color: #69f; color: #69f; }
-.modal-category.tech { border-color: #f6a; color: #f6a; }
-.modal-category.startup { border-color: #fa6; color: #fa6; }
-.modal-category.writing { border-color: #af6; color: #af6; }
-.modal-category.personal { border-color: #999; color: #999; }
+.modal-category.athletics { border-color: rgba(23, 105, 74, 0.35);  color: #17694a; background: rgba(23, 105, 74, 0.05); }
+.modal-category.education { border-color: rgba(45, 84, 163, 0.35);  color: #2d54a3; background: rgba(45, 84, 163, 0.05); }
+.modal-category.tech      { border-color: rgba(156, 58, 99, 0.35);  color: #9c3a63; background: rgba(156, 58, 99, 0.05); }
+.modal-category.startup   { border-color: rgba(165, 90, 20, 0.35);  color: #a55a14; background: rgba(165, 90, 20, 0.05); }
+.modal-category.writing   { border-color: rgba(102, 119, 28, 0.4);  color: #5f6f1a; background: rgba(102, 119, 28, 0.06); }
+.modal-category.personal  { border-color: var(--line-strong);       color: var(--ink-faint); background: rgba(20, 20, 18, 0.03); }
 
 .modal-header h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #fff;
-    margin: 0.5rem 0;
-    letter-spacing: 1px;
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0.4rem 0;
 }
 
 .modal-year {
-    font-size: 0.85rem;
-    color: #666;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-ghost);
 }
 
 .modal-body {
@@ -196,13 +256,13 @@ footer {
 }
 
 .modal-body p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: #ccc;
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
 }
 
 .modal-links {
-    margin-top: 1rem;
+    margin-top: 1.15rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -210,28 +270,31 @@ footer {
 
 .modal-links a {
     display: inline-block;
-    font-size: 0.75rem;
-    color: #888;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
     text-decoration: none;
-    padding: 6px 12px;
-    border: 1px solid #444;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
+    padding: 7px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.04em;
+    background: var(--surface);
 }
 
 .modal-links a:hover {
-    color: #fff;
-    border-color: #888;
+    color: var(--surface);
+    background: var(--ink);
+    border-color: var(--ink);
 }
 
 .modal-links a::before {
     content: '\2192';
-    margin-right: 6px;
+    margin-right: 7px;
 }
 
 .modal-connections {
-    border-top: 1px solid #333;
-    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.25rem;
 }
 
 .connection-group {
@@ -248,12 +311,12 @@ footer {
 }
 
 .connection-label {
-    font-size: 0.7rem;
+    font-size: 0.62rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #555;
+    letter-spacing: 0.2em;
+    color: var(--ink-ghost);
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
 
 .connection-nodes {
@@ -263,33 +326,35 @@ footer {
 }
 
 .connection-node {
-    font-size: 0.75rem;
-    color: #888;
-    padding: 4px 10px;
-    background: #1a1a1a;
-    border: 1px solid #333;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    padding: 5px 12px;
+    background: #f5f5f1;
+    border: 1px solid var(--line);
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .connection-node:hover {
-    color: #fff;
-    border-color: #666;
+    color: var(--ink);
+    border-color: var(--ink-soft);
+    background: var(--surface);
 }
 
 /* Tablet and below */
 @media (max-width: 768px) {
     .container {
-        margin: 1rem auto;
+        margin: 1.25rem auto;
     }
 
     h1 {
-        font-size: 1.75rem;
-        letter-spacing: 1px;
+        font-size: 1.9rem;
     }
 
     .subtitle {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
     }
 
     .social-links {
@@ -297,13 +362,13 @@ footer {
     }
 
     .social-links a {
-        font-size: 0.75rem;
-        padding: 8px 4px;
+        font-size: 0.68rem;
+        padding: 8px 4px 3px;
     }
 
     .canvas-container {
         padding: 1rem;
-        border: none;
+        border-radius: 10px;
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
@@ -319,21 +384,29 @@ footer {
         display: none;
     }
 
+    .hint-desktop {
+        display: none;
+    }
+
+    .hint-mobile {
+        display: block;
+    }
+
     .modal-content {
         padding: 1.5rem;
         max-height: 85vh;
     }
 
     .modal-header h2 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     .modal-body p {
-        font-size: 0.85rem;
+        font-size: 0.84rem;
     }
 
     footer {
-        font-size: 0.7rem;
+        font-size: 0.62rem;
     }
 }
 
@@ -341,19 +414,19 @@ footer {
 @media (max-width: 480px) {
     .container {
         width: 100%;
-        margin: 0.5rem auto;
+        margin: 0.75rem auto;
     }
 
     header {
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.62rem;
     }
 
     .social-links {
@@ -361,11 +434,14 @@ footer {
     }
 
     .social-links a {
-        font-size: 0.7rem;
+        font-size: 0.64rem;
     }
 
     .canvas-container {
-        padding: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
     }
 
     #neuralNetwork {
@@ -376,7 +452,7 @@ footer {
 
     .modal-content {
         width: 95%;
-        padding: 1.25rem;
+        padding: 1.35rem;
         max-height: 90vh;
     }
 
@@ -384,21 +460,20 @@ footer {
         top: 0.75rem;
         right: 0.75rem;
         font-size: 1.75rem;
-        padding: 4px;
     }
 
     .modal-header h2 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         padding-right: 1.5rem;
     }
 
     .modal-category {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
     }
 
     .modal-body p {
         font-size: 0.8rem;
-        line-height: 1.6;
+        line-height: 1.65;
     }
 
     .modal-links a {
@@ -419,7 +494,7 @@ footer {
 /* Small phones */
 @media (max-width: 360px) {
     h1 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     #neuralNetwork {
@@ -445,12 +520,12 @@ footer {
     }
 
     h1 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         margin-bottom: 0.25rem;
     }
 
     .subtitle {
-        font-size: 0.75rem;
+        font-size: 0.6rem;
     }
 
     .social-links {
