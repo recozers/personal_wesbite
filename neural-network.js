@@ -10,7 +10,6 @@ const INK = {
     labelHover: '#141412',
     labelDim: 'rgba(69, 69, 63, 0.28)',
     layerLabel: '#b3b3ab',
-    pulse: 'rgba(20, 20, 18, 0.55)',
     halo: 'rgba(255, 255, 255, 0.9)'
 };
 
@@ -28,8 +27,6 @@ class NeuralNetworkViz {
         this.data = data;
         this.nodes = [];
         this.edges = [];
-        this.pulses = [];
-        this.lastSpawn = 0;
         this.tooltip = document.getElementById('tooltip');
         this.hoveredNode = null;
         this.neighborIds = new Set();
@@ -174,12 +171,6 @@ class NeuralNetworkViz {
         return this.easeOutCubic(Math.min(1, Math.max(0, (elapsed - delay) / duration)));
     }
 
-    entryDone(elapsed) {
-        if (this.reducedMotion) return true;
-        const lastLayer = this.data.layers.length - 1;
-        return elapsed > lastLayer * ENTRY.layerDelay + ENTRY.edgeLag + ENTRY.edgeDur;
-    }
-
     isFocused(node) {
         return !this.hoveredNode || this.neighborIds.has(node.id);
     }
@@ -219,39 +210,6 @@ class NeuralNetworkViz {
                 ctx.lineWidth = 1;
             }
             ctx.stroke();
-            ctx.restore();
-        });
-    }
-
-    updateAndDrawPulses(now, elapsed) {
-        if (this.reducedMotion || !this.edges.length) return;
-        if (!this.entryDone(elapsed)) return;
-
-        // Spawn signals travelling along random connections
-        if (now - this.lastSpawn > 400 && this.pulses.length < 9) {
-            this.lastSpawn = now;
-            this.pulses.push({
-                edgeIndex: Math.floor(Math.random() * this.edges.length),
-                start: now,
-                dur: 1100 + Math.random() * 900
-            });
-        }
-
-        const ctx = this.ctx;
-        this.pulses = this.pulses.filter(p => now - p.start < p.dur);
-        this.pulses.forEach(p => {
-            const edge = this.edges[p.edgeIndex];
-            if (!edge) return;
-            const t = (now - p.start) / p.dur;
-            const pos = this.pointOnEdge(edge, t);
-            const state = this.edgeState(edge);
-            const fade = Math.sin(Math.PI * t) * (state === 'dim' ? 0.25 : 1);
-            ctx.save();
-            ctx.globalAlpha = fade;
-            ctx.fillStyle = INK.pulse;
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, 1.8, 0, Math.PI * 2);
-            ctx.fill();
             ctx.restore();
         });
     }
@@ -354,7 +312,6 @@ class NeuralNetworkViz {
 
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.drawConnections(elapsed);
-        this.updateAndDrawPulses(now, elapsed);
         this.drawNodes(elapsed);
         this.drawLayerLabels(elapsed);
 
