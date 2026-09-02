@@ -324,6 +324,17 @@ const timelineData = {
                     year: "2026",
                     category: "tech",
                     url: "https://arxiv.org/abs/2605.13904"
+                },
+                {
+                    id: "l9n9",
+                    title: "Cough Triage",
+                    description: "Hackathon: an AI-triaged waiting room",
+                    details: "A three-hour hackathon build: patients walk into a simulated waiting room, cough at a check-in kiosk, and a HeAR-based lung-sound model triages them before a doctor calls them by tier. Mid-hackathon I retrained the head on a rented GPU with class-balanced loss and calibrated it on its validation subjects, lifting held-out tier agreement from 0.41 to 0.78, and the dashboard shows urgent patients being seen sooner than first-come-first-served on the same arrivals.",
+                    year: "2026",
+                    category: "tech",
+                    links: [
+                        { label: "Code on GitHub", url: "https://github.com/recozers/cough-triage-clinic" }
+                    ]
                 }
             ]
         }
@@ -433,6 +444,11 @@ const timelineData = {
         { from: "l8n1", to: "l9n8" },
         { from: "l8n2", to: "l9n8" },
         { from: "l8n3", to: "l9n8" },
-        { from: "l8n4", to: "l9n8" }
+        { from: "l8n4", to: "l9n8" },
+        { from: "l8n0", to: "l9n9" },
+        { from: "l8n1", to: "l9n9" },
+        { from: "l8n2", to: "l9n9" },
+        { from: "l8n3", to: "l9n9" },
+        { from: "l8n4", to: "l9n9" }
     ]
 };
