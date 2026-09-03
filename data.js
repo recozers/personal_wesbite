@@ -324,9 +324,15 @@ const timelineData = {
                     year: "2026",
                     category: "tech",
                     url: "https://arxiv.org/abs/2605.13904"
-                },
+                }
+            ]
+        },
+        // Output layer - what's next
+        {
+            name: "L10",
+            nodes: [
                 {
-                    id: "l9n9",
+                    id: "l10n0",
                     title: "Cough Triage",
                     description: "Hackathon: an AI-triaged waiting room",
                     details: "A three-hour hackathon build: patients walk into a simulated waiting room, cough at a check-in kiosk, and a HeAR-based lung-sound model triages them before a doctor calls them by tier. Mid-hackathon I retrained the head on a rented GPU with class-balanced loss and calibrated it on its validation subjects, lifting held-out tier agreement from 0.41 to 0.78, and the dashboard shows urgent patients being seen sooner than first-come-first-served on the same arrivals.",
@@ -334,6 +340,17 @@ const timelineData = {
                     category: "tech",
                     links: [
                         { label: "Code on GitHub", url: "https://github.com/recozers/cough-triage-clinic" }
+                    ]
+                },
+                {
+                    id: "l10n1",
+                    title: "Tireless Guardians",
+                    description: "Personal health in the era of superintelligence",
+                    details: "My essay on personal health in the era of superintelligence: what it means to have tireless guardians of your health, and what it takes to build them. Read it on Substack.",
+                    year: "2026",
+                    category: "writing",
+                    links: [
+                        { label: "Read the Essay", url: "https://stuartbladon.substack.com/p/tireless-guardians" }
                     ]
                 }
             ]
@@ -445,10 +462,25 @@ const timelineData = {
         { from: "l8n2", to: "l9n8" },
         { from: "l8n3", to: "l9n8" },
         { from: "l8n4", to: "l9n8" },
-        { from: "l8n0", to: "l9n9" },
-        { from: "l8n1", to: "l9n9" },
-        { from: "l8n2", to: "l9n9" },
-        { from: "l8n3", to: "l9n9" },
-        { from: "l8n4", to: "l9n9" }
+
+        // L9 -> L10 (9x2 = 18)
+        { from: "l9n0", to: "l10n0" },
+        { from: "l9n0", to: "l10n1" },
+        { from: "l9n1", to: "l10n0" },
+        { from: "l9n1", to: "l10n1" },
+        { from: "l9n2", to: "l10n0" },
+        { from: "l9n2", to: "l10n1" },
+        { from: "l9n3", to: "l10n0" },
+        { from: "l9n3", to: "l10n1" },
+        { from: "l9n4", to: "l10n0" },
+        { from: "l9n4", to: "l10n1" },
+        { from: "l9n5", to: "l10n0" },
+        { from: "l9n5", to: "l10n1" },
+        { from: "l9n6", to: "l10n0" },
+        { from: "l9n6", to: "l10n1" },
+        { from: "l9n7", to: "l10n0" },
+        { from: "l9n7", to: "l10n1" },
+        { from: "l9n8", to: "l10n0" },
+        { from: "l9n8", to: "l10n1" }
     ]
 };
