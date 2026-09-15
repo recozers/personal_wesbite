@@ -352,6 +352,19 @@ const timelineData = {
                     links: [
                         { label: "Read the Essay", url: "https://stuartbladon.substack.com/p/tireless-guardians" }
                     ]
+                },
+                {
+                    id: "l10n2",
+                    title: "Open Observatory",
+                    description: "Open source monitoring of the world's compute",
+                    details: "I'm building Open Observatory, an open source project to monitor the build out and utilisation of compute across the world, with China as the priority because its official figures are hard to verify. It dates data-centre construction from radar and optical satellite imagery, tracks fuel burned on site from satellite NO2, and pulls capacity and utilisation from operator filings, with a public source behind every number. The work runs as open requests that anyone can pick up by donating a session of their coding agent.",
+                    year: "2026",
+                    category: "tech",
+                    links: [
+                        { label: "Open Observatory", url: "https://openobservatory.info" },
+                        { label: "Requests for Work", url: "https://openobservatory.info/requests.html" },
+                        { label: "Code on GitHub", url: "https://github.com/recozers/openobservatory" }
+                    ]
                 }
             ]
         }
@@ -463,7 +476,7 @@ const timelineData = {
         { from: "l8n3", to: "l9n8" },
         { from: "l8n4", to: "l9n8" },
 
-        // L9 -> L10 (9x2 = 18)
+        // L9 -> L10 (9x3 = 27)
         { from: "l9n0", to: "l10n0" },
         { from: "l9n0", to: "l10n1" },
         { from: "l9n1", to: "l10n0" },
@@ -481,6 +494,15 @@ const timelineData = {
         { from: "l9n7", to: "l10n0" },
         { from: "l9n7", to: "l10n1" },
         { from: "l9n8", to: "l10n0" },
-        { from: "l9n8", to: "l10n1" }
+        { from: "l9n8", to: "l10n1" },
+        { from: "l9n0", to: "l10n2" },
+        { from: "l9n1", to: "l10n2" },
+        { from: "l9n2", to: "l10n2" },
+        { from: "l9n3", to: "l10n2" },
+        { from: "l9n4", to: "l10n2" },
+        { from: "l9n5", to: "l10n2" },
+        { from: "l9n6", to: "l10n2" },
+        { from: "l9n7", to: "l10n2" },
+        { from: "l9n8", to: "l10n2" }
     ]
 };
