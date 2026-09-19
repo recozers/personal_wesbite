@@ -365,6 +365,18 @@ const timelineData = {
                         { label: "Requests for Work", url: "https://openobservatory.info/requests.html" },
                         { label: "Code on GitHub", url: "https://github.com/recozers/openobservatory" }
                     ]
+                },
+                {
+                    id: "l10n3",
+                    title: "Brain2Game",
+                    description: "Hackathon winner: a live brain twin that builds you a game",
+                    details: "Built in a day at the Tech Europe Google DeepMind hackathon. A phone streams what it sees and hears to a pool of GPUs on Modal running Meta's Tribe V2, the brain encoding model from my interp paper, and a full-resolution cortex lights up with what an average brain would be doing about 25 seconds later. Press “Train my brain” and a Gemini agent finds the brain systems the footage left idle, then writes a browser game to exercise them. The live demo flopped: the Modal account hit its spending limit just before it started, and the restarted GPUs were still warming up, so the brain sat on “listening…” for a minute and a half. It still won overall and took the Modal Track prize.",
+                    year: "2026",
+                    category: "tech",
+                    links: [
+                        { label: "Watch the Demo", url: "https://www.loom.com/share/566cdf3340ef40b0afff80877da728a2" },
+                        { label: "Code on GitHub", url: "https://github.com/recozers/brain2game" }
+                    ]
                 }
             ]
         }
@@ -476,7 +488,7 @@ const timelineData = {
         { from: "l8n3", to: "l9n8" },
         { from: "l8n4", to: "l9n8" },
 
-        // L9 -> L10 (9x3 = 27)
+        // L9 -> L10 (9x4 = 36)
         { from: "l9n0", to: "l10n0" },
         { from: "l9n0", to: "l10n1" },
         { from: "l9n1", to: "l10n0" },
@@ -503,6 +515,15 @@ const timelineData = {
         { from: "l9n5", to: "l10n2" },
         { from: "l9n6", to: "l10n2" },
         { from: "l9n7", to: "l10n2" },
-        { from: "l9n8", to: "l10n2" }
+        { from: "l9n8", to: "l10n2" },
+        { from: "l9n0", to: "l10n3" },
+        { from: "l9n1", to: "l10n3" },
+        { from: "l9n2", to: "l10n3" },
+        { from: "l9n3", to: "l10n3" },
+        { from: "l9n4", to: "l10n3" },
+        { from: "l9n5", to: "l10n3" },
+        { from: "l9n6", to: "l10n3" },
+        { from: "l9n7", to: "l10n3" },
+        { from: "l9n8", to: "l10n3" }
     ]
 };
