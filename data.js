@@ -377,6 +377,17 @@ const timelineData = {
                         { label: "Watch the Demo", url: "https://www.loom.com/share/566cdf3340ef40b0afff80877da728a2" },
                         { label: "Code on GitHub", url: "https://github.com/recozers/brain2game" }
                     ]
+                },
+                {
+                    id: "l10n4",
+                    title: "BrainRot",
+                    description: "Glasses that watch your brain rot, then roast you until you touch grass",
+                    details: "Built solo in an afternoon at a hackathon. Every two minutes my Oakley Meta glasses grab a few seconds of video and my phone grabs the audio. Meta's Tribe V2 on a Modal H100 predicts how an average brain would respond, and any region I don't feed slowly decays. In the app a 3D cortex grows mould and flies, Gemini checks the scores against what the camera actually saw, and then it sends rude, anatomically precise push notifications until I go outside: “An actual outdoor vista. Your retrosplenial cortex is stunned you remembered what three dimensions look like.” I tested it with twenty minutes of doomscrolling and then a walk up to Coit Tower during Fleet Week. The glasses caught a crowd filming the Blue Angels and missed every single jet.",
+                    year: "2026",
+                    category: "tech",
+                    links: [
+                        { label: "Code on GitHub", url: "https://github.com/recozers/brainrot" }
+                    ]
                 }
             ]
         }
@@ -488,7 +499,7 @@ const timelineData = {
         { from: "l8n3", to: "l9n8" },
         { from: "l8n4", to: "l9n8" },
 
-        // L9 -> L10 (9x4 = 36)
+        // L9 -> L10 (9x5 = 45)
         { from: "l9n0", to: "l10n0" },
         { from: "l9n0", to: "l10n1" },
         { from: "l9n1", to: "l10n0" },
@@ -524,6 +535,15 @@ const timelineData = {
         { from: "l9n5", to: "l10n3" },
         { from: "l9n6", to: "l10n3" },
         { from: "l9n7", to: "l10n3" },
-        { from: "l9n8", to: "l10n3" }
+        { from: "l9n8", to: "l10n3" },
+        { from: "l9n0", to: "l10n4" },
+        { from: "l9n1", to: "l10n4" },
+        { from: "l9n2", to: "l10n4" },
+        { from: "l9n3", to: "l10n4" },
+        { from: "l9n4", to: "l10n4" },
+        { from: "l9n5", to: "l10n4" },
+        { from: "l9n6", to: "l10n4" },
+        { from: "l9n7", to: "l10n4" },
+        { from: "l9n8", to: "l10n4" }
     ]
 };
